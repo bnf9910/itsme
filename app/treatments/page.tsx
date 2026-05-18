@@ -121,51 +121,70 @@ export default function TreatmentsPage() {
           <div className="mb-20">
             <p className="eyebrow mb-6">The Full Menu</p>
             <h2 className="display-heading text-4xl lg:text-6xl max-w-3xl">
-              Every device, considered.
+              Every treatment, <em>considered</em>.
             </h2>
-            <p className="mt-6 max-w-xl text-ink-700">
-              We carry the full range of leading aesthetic technologies. Each
-              has its place; none is universal.
+            <p className="mt-6 max-w-2xl text-ink-700 leading-relaxed">
+              Four pillars of our practice—from contour-defining injections to
+              advanced lifting and dermal restoration. Each plan is calibrated
+              to the patient.
             </p>
           </div>
 
-          <div className="space-y-24">
-            {TREATMENT_CATEGORIES.map((cat) => (
+          <div className="space-y-32">
+            {TREATMENT_CATEGORIES.map((cat, catIdx) => (
               <div key={cat.id}>
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-4">
-                  <div>
-                    <p className="eyebrow text-accent mb-3">
-                      {String(TREATMENT_CATEGORIES.indexOf(cat) + 1).padStart(
-                        2,
-                        '0'
-                      )}{' '}
-                      ·  Category
-                    </p>
-                    <h3 className="display-heading text-3xl lg:text-5xl">
-                      {cat.name}
-                    </h3>
+                  <div className="flex items-baseline gap-6">
+                    <span className="font-display text-6xl lg:text-7xl text-accent/40 leading-none">
+                      {String(catIdx + 1).padStart(2, '0')}
+                    </span>
+                    <div>
+                      <p className="eyebrow text-accent mb-3">Category {catIdx + 1}</p>
+                      <h3 className="display-heading text-3xl lg:text-5xl">
+                        {cat.name}
+                      </h3>
+                    </div>
                   </div>
-                  <p className="max-w-md text-ink-500">{cat.description}</p>
+                  <p className="max-w-md text-ink-500 lg:text-right">{cat.description}</p>
                 </div>
                 <div className="hairline mb-10" />
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {cat.devices.map((d, di) => (
-                    <article
-                      key={d.name}
-                      className="group relative border border-bone-200 bg-bone-50 hover:bg-ink hover:text-bone-50 transition-colors duration-500 overflow-hidden"
-                    >
-                      <div className="absolute top-6 right-6 font-display text-5xl text-accent/30 group-hover:text-accent/60 transition-colors">
-                        {String(di + 1).padStart(2, '0')}
-                      </div>
-                      <div className="p-10 pt-12">
-                        <h4 className="font-display text-3xl mb-2">{d.name}</h4>
-                        <div className="hairline w-12 my-4 opacity-60" />
-                        <p className="text-sm leading-relaxed opacity-90">
-                          {d.description}
-                        </p>
-                      </div>
-                    </article>
-                  ))}
+                  {cat.devices.map((d, di) => {
+                    // Check if the image is a real device photo (vs the generic density.webp placeholder for treatment areas)
+                    const hasDeviceImage = !d.image.endsWith('/density.webp') ||
+                      ['Density', 'Density Skin Booster'].includes(d.name);
+                    
+                    return (
+                      <article
+                        key={d.name}
+                        className="group relative border border-bone-200 bg-bone-50 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-500 overflow-hidden"
+                      >
+                        {hasDeviceImage ? (
+                          <div className="aspect-[4/3] bg-bone-100 relative overflow-hidden">
+                            <Image
+                              src={d.image}
+                              alt={d.name}
+                              fill
+                              className="object-contain p-6"
+                              sizes="(max-width: 768px) 100vw, 33vw"
+                            />
+                          </div>
+                        ) : (
+                          <div className="aspect-[4/3] bg-bone-100 relative flex items-center justify-center">
+                            <span className="font-display text-7xl text-accent/30 leading-none">
+                              {String(di + 1).padStart(2, '0')}
+                            </span>
+                          </div>
+                        )}
+                        <div className="p-6 lg:p-8">
+                          <h4 className="font-display text-xl lg:text-2xl mb-2">{d.name}</h4>
+                          <p className="text-sm text-ink-700 leading-relaxed">
+                            {d.description}
+                          </p>
+                        </div>
+                      </article>
+                    );
+                  })}
                 </div>
               </div>
             ))}

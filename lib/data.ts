@@ -34,6 +34,22 @@ export const CLINIC = {
     closed: "Sundays & Public Holidays",
   },
   signature: ["Onda Lifting", "ITs Me Injection", "Density (DENSITY) Skin Booster", "Shoulder Filler"],
+
+  // ⚠️ PLACEHOLDER VALUES — replace with real clinic contact information
+  // These are used by the floating contact buttons and Contact page.
+  contact: {
+    // Display format (e.g. "+82 2-XXXX-XXXX") — shown to user
+    phoneDisplay: "+82 2-0000-0000",
+    // Tel link format (no spaces, no dashes) — used in <a href="tel:...">
+    phoneTel: "+8220000000",
+    // Email address
+    email: "global@itsme1.kr",
+    // WhatsApp — country code + number, no spaces or symbols
+    // e.g. "821012345678" for a Korean number 010-1234-5678
+    whatsapp: "821000000000",
+    // KakaoTalk channel URL (optional)
+    kakao: "",
+  },
 };
 
 // ============================================================
@@ -95,7 +111,7 @@ export const SIGNATURE_TREATMENTS = [
   {
     slug: "density",
     name: "Density Skin Booster",
-    image: "/images/clinic/dsc07262_l.webp",
+    image: "/images/clinic/dsc07230_l.webp",
     deviceImage: "/images/treatments/density.webp",
     tagline: "Restore moisture and elasticity from within.",
     description: "Density is an advanced skin booster that delivers hyaluronic acid and skin-conditioning ingredients deep into the dermis. Unlike topical hydration, Density works at the cellular level to restore plumpness, smooth fine lines, and improve skin density over a 4–8 week timeline.",
@@ -106,7 +122,7 @@ export const SIGNATURE_TREATMENTS = [
   {
     slug: "shoulder-filler",
     name: "Shoulder Filler",
-    image: "/images/clinic/dsc07272_l.webp",
+    image: "/images/clinic/dsc07232_l.webp",
     deviceImage: "/images/clinic/dsc07254_l.webp",
     tagline: "Sculpt elegant shoulder lines.",
     description: "Strategic placement of dermal filler to refine the slope and balance of the shoulder line—a treatment increasingly requested by patients who want a more elegant silhouette in formal wear or wedding photography. Results last 12–18 months.",
@@ -117,37 +133,71 @@ export const SIGNATURE_TREATMENTS = [
 ];
 
 // ============================================================
-// FULL TREATMENT MENU
+// FULL TREATMENT MENU — 4 categories (per spec)
 // ============================================================
 export const TREATMENT_CATEGORIES = [
   {
+    id: "its-me-injection",
+    name: "ITs Me Injection — Treatment Areas",
+    short: "ITs Me Injection",
+    description: "Our signature contour-defining injection. Calibrated per patient and applied across 11 facial and body areas for refined, gradual definition.",
+    devices: [
+      { name: "Double Chin", description: "Refining the line between jaw and neck for a defined profile.", image: "/images/treatments/density.webp" },
+      { name: "Jawline", description: "Sculpting along the jawline to enhance facial framing.", image: "/images/treatments/density.webp" },
+      { name: "Nasolabial Folds (Upper)", description: "Softening the area above the nasolabial fold.", image: "/images/treatments/density.webp" },
+      { name: "Front Cheek", description: "Refining anterior cheek volume and contour.", image: "/images/treatments/density.webp" },
+      { name: "Side Cheek", description: "Defining lateral cheek for a slimmer mid-face.", image: "/images/treatments/density.webp" },
+      { name: "Deep Cheek (Bull's-Eye)", description: "Targeting deeper cheek fat layers.", image: "/images/treatments/density.webp" },
+      { name: "Marionette Lines", description: "Smoothing the lines from mouth corners to chin.", image: "/images/treatments/density.webp" },
+      { name: "Back of Neck", description: "Refining the contour of the posterior neck.", image: "/images/treatments/density.webp" },
+      { name: "Accessory Breast", description: "Reducing accessory breast tissue along the bra line.", image: "/images/treatments/density.webp" },
+      { name: "Upper Body", description: "Body contouring for arms, back, and torso.", image: "/images/treatments/density.webp" },
+      { name: "Lower Body", description: "Body contouring for thighs, hips, and lower torso.", image: "/images/treatments/density.webp" },
+    ],
+  },
+  {
+    id: "petit",
+    name: "Petit Procedures",
+    short: "Petit",
+    description: "Subtle, minimally-invasive refinements—fillers, neurotoxins, and thread lifts—performed in-office with minimal downtime.",
+    devices: [
+      { name: "Dermal Filler", description: "Volume restoration and contour refinement across the face.", image: "/images/treatments/density.webp" },
+      { name: "Juvederm", description: "Premium hyaluronic acid filler for natural, long-lasting volume.", image: "/images/treatments/density.webp" },
+      { name: "Restylane", description: "Versatile HA filler for lips, tear troughs, and contour.", image: "/images/treatments/density.webp" },
+      { name: "Botox", description: "Neurotoxin for dynamic line softening and slimming.", image: "/images/treatments/density.webp" },
+      { name: "Xeomin", description: "Highly purified neurotoxin alternative—suited for sensitive patients.", image: "/images/treatments/density.webp" },
+      { name: "Thread Lifting", description: "Absorbable threads for non-surgical lift and skin renewal.", image: "/images/treatments/density.webp" },
+    ],
+  },
+  {
     id: "lifting",
-    name: "Lifting & Tightening",
-    description: "Restore firmness with our most-requested non-surgical lifting protocols.",
+    name: "Premium Lifting Center",
+    short: "Lifting",
+    description: "Korea's most advanced non-surgical lifting technologies, calibrated for skin type and facial anatomy.",
     devices: [
       { name: "Ulthera Prime", description: "HIFU energy reaches the SMAS layer for deep, lasting lift.", image: "/images/treatments/ulthera-prime.webp" },
       { name: "Thermage FLX", description: "Monopolar RF tightens and stimulates collagen across the full face.", image: "/images/treatments/thermage-flx.webp" },
-      { name: "Shrink Universe", description: "Next-generation HIFU with broader coverage and shorter sessions.", image: "/images/treatments/shrink-universe.webp" },
-      { name: "Onda", description: "Microwave technology targeting deep tissue and adipose layers.", image: "/images/treatments/onda.webp" },
-      { name: "Volnewmer", description: "RF lifting calibrated for sensitive Asian skin tones.", image: "/images/treatments/volnewmer.webp" },
+      { name: "Density", description: "Premium skin booster restoring deep moisture and elasticity.", image: "/images/treatments/density.webp" },
+      { name: "Onda Lifting", description: "Microwave technology targeting deep tissue and adipose layers.", image: "/images/treatments/onda.webp" },
       { name: "Potra Titanium", description: "Lifting alternative for slimmer faces and zero-downtime lifestyles.", image: "/images/treatments/potra.webp" },
+      { name: "Shrink Universe", description: "Next-generation HIFU with broader coverage and shorter sessions.", image: "/images/treatments/shrink-universe.webp" },
+      { name: "MCT (Stem Cell)", description: "Stem-cell-based regenerative protocol for deep tissue revitalization.", image: "/images/treatments/density.webp" },
+      { name: "Potenza", description: "Microneedle RF for pores, scars, and overall texture.", image: "/images/treatments/potenza.webp" },
+      { name: "Volnewmer", description: "RF lifting calibrated for sensitive Asian skin tones.", image: "/images/treatments/volnewmer.webp" },
     ],
   },
   {
     id: "skin-booster",
-    name: "Skin Boosters & Glow",
-    description: "Hydration, elasticity, and luminosity—delivered into the dermis.",
+    name: "Skin Boosters",
+    short: "Skin Booster",
+    description: "Hydration, elasticity, and luminosity—delivered directly into the dermis through micro-injection protocols.",
     devices: [
-      { name: "Density", description: "Premium skin booster restoring deep moisture and plumpness.", image: "/images/treatments/density.webp" },
+      { name: "Rejuran / Rejuran HB", description: "Polynucleotide-based booster for skin healing and elasticity.", image: "/images/treatments/density.webp" },
+      { name: "Skinvive", description: "Hyaluronic acid microdroplet booster for cheek smoothness and glow.", image: "/images/treatments/density.webp" },
+      { name: "Belotero (Revive)", description: "Mesotherapy booster for hydration and fine line smoothing.", image: "/images/treatments/density.webp" },
+      { name: "Rituo", description: "Premium hydration protocol with Dermashine delivery.", image: "/images/treatments/density.webp" },
+      { name: "Letigen", description: "Advanced skin booster targeting deep dermal regeneration.", image: "/images/treatments/density.webp" },
       { name: "Trifill Pro", description: "Combination booster targeting hydration and collagen at once.", image: "/images/treatments/trifill-pro.webp" },
-    ],
-  },
-  {
-    id: "skin-rejuvenation",
-    name: "Texture & Pores",
-    description: "Microneedle RF and laser solutions for refined, even skin.",
-    devices: [
-      { name: "Potenza", description: "Microneedle RF for pores, scars, and overall texture.", image: "/images/treatments/potenza.webp" },
     ],
   },
 ];
@@ -252,14 +302,7 @@ export const CLINIC_PHOTOS = [
   "/images/clinic/dsc07230_l.webp",
   "/images/clinic/dsc07232_l.webp",
   "/images/clinic/dsc07236_l.webp",
-  "/images/clinic/dsc07240_l.webp",
   "/images/clinic/dsc07252_l.webp",
   "/images/clinic/dsc07254_l.webp",
   "/images/clinic/dsc07258_l.webp",
-  "/images/clinic/dsc07262_l.webp",
-  "/images/clinic/dsc07266_l.webp",
-  "/images/clinic/dsc07269_l.webp",
-  "/images/clinic/dsc07272_l.webp",
-  "/images/clinic/dsc07278_l.webp",
-  "/images/clinic/dsc07285_l.webp",
 ];

@@ -50,25 +50,25 @@ export default function ResultsPage() {
       {/* Gallery */}
       <section className="py-24">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-14">
             {RESULTS.map((r, i) => (
               <figure
                 key={r.image}
-                className={`group ${i % 6 === 1 ? 'lg:mt-16' : ''} ${
-                  i % 6 === 4 ? 'lg:mt-16' : ''
+                className={`group ${i % 4 === 1 ? 'lg:mt-24' : ''} ${
+                  i % 4 === 3 ? 'lg:mt-24' : ''
                 }`}
               >
-                <div className="image-frame aspect-[3/4] bg-bone-200 mb-4 relative">
+                <div className="image-frame aspect-[4/5] bg-bone-200 mb-6 relative">
                   <Image
                     src={r.image}
                     alt={r.title}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
                 <div className="flex items-baseline justify-between">
-                  <figcaption className="font-display text-2xl">
+                  <figcaption className="font-display text-2xl lg:text-3xl">
                     {r.title}
                   </figcaption>
                   <span className="eyebrow text-accent">{r.category}</span>

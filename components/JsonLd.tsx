@@ -1,4 +1,4 @@
-import { CLINIC, DOCTOR, SIGNATURE_TREATMENTS } from '@/lib/data';
+import { CLINIC, DOCTOR, SIGNATURE_TREATMENTS, TREATMENT_CATEGORIES } from '@/lib/data';
 
 const BASE_URL = 'https://itsme1.kr';
 
@@ -15,7 +15,7 @@ export function OrganizationSchema() {
     alternateName: CLINIC.nameEn,
     url: BASE_URL,
     logo: `${BASE_URL}/images/logo/itsme-logo.png`,
-    image: `${BASE_URL}/images/clinic/dsc07240_l.webp`,
+    image: `${BASE_URL}/images/clinic/dsc07227_l.webp`,
     description:
       "Premium aesthetic medicine clinic in Cheongdam-dong, Gangnam, Seoul. Specializing in non-surgical lifting, skin boosters, and contour refinement. English consultation available for international patients.",
     address: {
@@ -26,6 +26,8 @@ export function OrganizationSchema() {
       postalCode: '06014',
       addressCountry: 'KR',
     },
+    telephone: CLINIC.contact.phoneDisplay,
+    email: CLINIC.contact.email,
     geo: {
       '@type': 'GeoCoordinates',
       latitude: 37.5263,
@@ -47,11 +49,22 @@ export function OrganizationSchema() {
     ],
     priceRange: '$$$',
     medicalSpecialty: ['Dermatology', 'CosmeticProcedure', 'Aesthetics'],
-    availableService: SIGNATURE_TREATMENTS.map((t) => ({
-      '@type': 'MedicalProcedure',
-      name: t.name,
-      description: t.description,
-    })),
+    // Aggregate of signature treatments + every device in the full menu
+    availableService: [
+      ...SIGNATURE_TREATMENTS.map((t) => ({
+        '@type': 'MedicalProcedure',
+        name: t.name,
+        description: t.description,
+      })),
+      ...TREATMENT_CATEGORIES.flatMap((cat) =>
+        cat.devices.map((d) => ({
+          '@type': 'MedicalProcedure',
+          name: d.name,
+          description: d.description,
+          category: cat.name,
+        }))
+      ),
+    ],
     knowsLanguage: ['en', 'ko'],
     sameAs: [BASE_URL],
   };

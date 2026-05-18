@@ -21,7 +21,7 @@ export default function Home() {
       <section className="relative min-h-[100vh] grain overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/clinic/dsc07240_l.webp"
+            src="/images/clinic/dsc07227_l.webp"
             alt="IT'S ME Clinic Cheongdam interior"
             fill
             priority
@@ -140,7 +140,7 @@ export default function Home() {
               </div>
               <div className="image-frame aspect-[3/4] mt-12">
                 <Image
-                  src="/images/clinic/dsc07266_l.webp"
+                  src="/images/clinic/dsc07254_l.webp"
                   alt="Reception detail"
                   width={600}
                   height={800}

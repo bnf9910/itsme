@@ -185,7 +185,7 @@ export default function AboutPage() {
             </div>
             <div className="image-frame aspect-[4/5]">
               <Image
-                src="/images/clinic/dsc07269_l.webp"
+                src="/images/clinic/dsc07236_l.webp"
                 alt="IT'S ME Clinic exterior"
                 width={1000}
                 height={1250}

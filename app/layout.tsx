@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import FloatingContact from '@/components/FloatingContact';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
       "A refined aesthetic destination in Gangnam, Seoul. English consultation available.",
     images: [
       {
-        url: '/images/clinic/dsc07240_l.webp',
+        url: '/images/clinic/dsc07227_l.webp',
         width: 1920,
         height: 1280,
         alt: "IT'S ME Clinic Cheongdam interior",
@@ -62,7 +63,7 @@ export const metadata: Metadata = {
     title: "IT'S ME Clinic | Premium Aesthetic Medicine in Seoul",
     description:
       'Refined aesthetic medicine in Cheongdam-dong. English consultations.',
-    images: ['/images/clinic/dsc07240_l.webp'],
+    images: ['/images/clinic/dsc07227_l.webp'],
   },
   alternates: {
     canonical: 'https://itsme1.kr',
@@ -94,6 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <FloatingContact />
       </body>
     </html>
   );
